@@ -1,6 +1,6 @@
 # basic-html-map
  
- This is a basic project made using ESRI's JavaScript API
- -Sceneview (global map) that can be toggled to streetview at the click of a button
+ This is a basic project made using ESRI's JavaScript API<br />
+ -Sceneview (global map) that can be toggled from topographical view to streetview at the click of a button
  
- Served using http-server
+To serve, install http-server
