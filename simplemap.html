@@ -20,7 +20,7 @@
     let mapview;
     let sceneview;
     
-      require(["esri/Map", "esri/views/SceneView"], function(Map, SceneView) {
+      require(["esri/Map", "esri/views/SceneView", "esri/request"], function(Map, SceneView, Request) {
         map1 = new Map({basemap:"topo"});
         //these maps don't exist by themselves, they exist in some kind of view (mapview in this case) this one's topographic
         map2 = new Map({basemap:"satellite"})
