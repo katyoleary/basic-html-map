@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>hello esri!</title>
+    <script src='https://js.arcgis.com/4.4'></script>
+    <link rel= "stylesheet" href="https://js.arcgis.com/4.4/esri/css/main.css">
+  </head>
+  <body>
+    <h1>hi!</h1>
+    <!-- we have a class map that were instantiating with the function  -->
+    <button id= 'satellite'>Switch Streets/Topo</button>
+    <div id='mapview' style="width:800px;height:800px;"> map goes here</div>
+    
+    <script> 
+    let map1;
+    let map2;
+    let map3;
+    let mapview;
+    let sceneview;
+      require(["esri/Map", "esri/views/SceneView"], function(Map, SceneView) {
+        map1 = new Map({basemap:"topo"});
+        //these maps don't exist by themselves, they exist in some kind of view (mapview in this case) this one's topographic
+        map2 = new Map({basemap:"satellite"})
+        map3 = new Map({basemap:"streets"})
+        let viewOptions = {container: "mapview", map: map1, zoom: 5, center: [50, 50]}
+        sceneview = new SceneView(viewOptions);
+        // so many properties can be added here, have a look at the JS API and one can have total control over their view
+      });
+      document.getElementById("satellite").addEventListener("click",
+      function() {
+        if(sceneview.map === map1) {
+          sceneview.map = map3;
+        } else {
+          sceneview.map = map1;
+        }
+      })
+    </script>
+  </body>
+</html>
