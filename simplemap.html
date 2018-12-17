@@ -8,7 +8,9 @@
   <body>
     <h1>hi!</h1>
     <!-- we have a class map that were instantiating with the function  -->
-    <button id= 'satellite'>Switch Streets/Topo</button>
+    <button id= 'satellite'>Satellite View</button>
+    <button id='topo'>Topo View</button>
+    <button id= 'streets'>Streets View</button>
     <div id='mapview' style="width:800px;height:800px;"> map goes here</div>
     
     <script> 
@@ -17,6 +19,7 @@
     let map3;
     let mapview;
     let sceneview;
+    
       require(["esri/Map", "esri/views/SceneView"], function(Map, SceneView) {
         map1 = new Map({basemap:"topo"});
         //these maps don't exist by themselves, they exist in some kind of view (mapview in this case) this one's topographic
@@ -28,11 +31,15 @@
       });
       document.getElementById("satellite").addEventListener("click",
       function() {
-        if(sceneview.map === map1) {
-          sceneview.map = map3;
-        } else {
-          sceneview.map = map1;
-        }
+        sceneview.map = map2;
+      })
+      document.getElementById("topo").addEventListener("click",
+      function() {
+        sceneview.map = map1;
+      })
+      document.getElementById("streets").addEventListener("click",
+      function() {
+        sceneview.map = map3;
       })
     </script>
   </body>
