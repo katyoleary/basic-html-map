@@ -25,7 +25,7 @@
         //these maps don't exist by themselves, they exist in some kind of view (mapview in this case) this one's topographic
         map2 = new Map({basemap:"satellite"})
         map3 = new Map({basemap:"streets"})
-        let viewOptions = {container: "mapview", map: map1, zoom: 5, center: [50, 50]}
+        let viewOptions = {container: "mapview", map: map1, zoom: 5, center: [50, 50], scale: 6000}
         sceneview = new SceneView(viewOptions);
         // so many properties can be added here, have a look at the JS API and one can have total control over their view
       });
