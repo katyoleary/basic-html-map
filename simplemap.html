@@ -11,7 +11,9 @@
     <button id= 'satellite'>Satellite View</button>
     <button id='topo'>Topo View</button>
     <button id= 'streets'>Streets View</button>
-    <div id='mapview' style="width:800px;height:800px;"> map goes here</div>
+    <select id= 'listServices'>List services</select>
+
+    <div id='mapview' style="width:800px;height:800px;"> </div>
     
     <script> 
     let map1;
@@ -25,9 +27,24 @@
         //these maps don't exist by themselves, they exist in some kind of view (mapview in this case) this one's topographic
         map2 = new Map({basemap:"satellite"})
         map3 = new Map({basemap:"streets"})
-        let viewOptions = {container: "mapview", map: map1, zoom: 5, center: [50, 50], scale: 6000}
+        let viewOptions = {container: "mapview", map: map1, zoom: 5, center: [50, 50]}
         sceneview = new SceneView(viewOptions);
         // so many properties can be added here, have a look at the JS API and one can have total control over their view
+
+        let url="http://server.arcgisonline.com/arcgis/rest/services?f=json";
+        let options = {responseType: "json"};
+
+        Request(url, options)
+          .then(function(response){
+            let result = response.data;
+            let listServices = document.getElementById("listServices");
+            
+            for(let i = 0; i < result.services.length; i++) {
+              let option = document.createElement("option");
+              option.textContent = result.services[i].name;
+              listServices.appendChild(option);
+            }
+          });
       });
       document.getElementById("satellite").addEventListener("click",
       function() {
